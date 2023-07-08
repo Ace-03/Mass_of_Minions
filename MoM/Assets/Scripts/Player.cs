@@ -10,10 +10,11 @@ public class Player : MonoBehaviour
     private float vInput;
     private float hInput;
     private Rigidbody _rb;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        _rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -22,11 +23,7 @@ public class Player : MonoBehaviour
         vInput = Input.GetAxis("Vertical") * moveSpeed;
         hInput = Input.GetAxis("Horizontal") * rotateSpeed;
 
-        Vector3 rotation = Vector3.up * hInput;
-        Quaternion angleRot = Quaternion.Euler(rotation * Time.fixedDeltaTime);
-
-        _rb.MovePosition(this.transform.position + this.transform.forward * vInput * Time.fixedDeltaTime);
-        _rb.MoveRotation(_rb.rotation * angleRot);
+        
         /*
         this.transform.Translate(Vector3.forward * vInput * Time.deltaTime);
         this.transform.Rotate(Vector3.up * hInput * Time.deltaTime);
@@ -34,7 +31,11 @@ public class Player : MonoBehaviour
     }
     void FixedUpdate()
     {
-        
+        Vector3 rotation = Vector3.up * hInput;
+        Quaternion angleRot = Quaternion.Euler(rotation * Time.fixedDeltaTime);
+
+        _rb.MovePosition(this.transform.position + this.transform.forward * vInput * Time.fixedDeltaTime);
+        _rb.MoveRotation(_rb.rotation * angleRot);
     }
 }
 
