@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy_Script : MonoBehaviour
+public class Ranged_Enemy_Script : MonoBehaviour
 {
 
     public Transform player;
@@ -21,6 +21,7 @@ public class Enemy_Script : MonoBehaviour
         InitializePatrolRoute();
         MoveToNextPatrolLocation();
         player = GameObject.Find("Player").transform;
+
     }
 
     void MoveToNextPatrolLocation()
@@ -30,7 +31,7 @@ public class Enemy_Script : MonoBehaviour
 
     void InitializePatrolRoute()
     {
-        foreach(Transform child in patrolRoute)
+        foreach (Transform child in patrolRoute)
         {
             locations.Add(child);
         }
@@ -40,7 +41,8 @@ public class Enemy_Script : MonoBehaviour
     {
         if (other.name == "Player")
         {
-            agent.destination = player.position;
+            agent.destination = player.position - new Vector3(2f, 2f, 2f);
+            //Debug.Log(player.position);
             Debug.Log("Player detected!");
         }
     }
@@ -49,7 +51,7 @@ public class Enemy_Script : MonoBehaviour
     {
         if (other.name == "Player")
         {
-            agent.destination = player.position - new Vector3(.2f, .2f, .2f);
+            agent.destination = player.position;
             Debug.Log("Attacking!");
         }
     }
@@ -65,6 +67,6 @@ public class Enemy_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
