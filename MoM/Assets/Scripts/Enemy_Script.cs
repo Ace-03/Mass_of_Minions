@@ -10,10 +10,12 @@ public class Enemy_Script : MonoBehaviour
     public Transform player;
     public Transform patrolRoute;
     public List<Transform> locations;
+    public float slashDelay;
+    public GameObject slash;
 
     private int locationIndex = 0;
     private NavMeshAgent agent;
-    private int _lives = 2;
+    private int _lives = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +53,16 @@ public class Enemy_Script : MonoBehaviour
         {
             agent.destination = player.position - new Vector3(.2f, .2f, .2f);
             Debug.Log("Attacking!");
+
+            if (slashDelay > 0)
+            {
+                slashDelay -= Time.deltaTime;
+            }
+            else
+            {
+                GameObject newSlash = Instantiate(slash, this.transform.position + this.transform.rotation * new Vector3(0, 0, .7f), this.transform.rotation * Quaternion.Euler(0, 0, 45)) as GameObject;
+                slashDelay = 10;
+            }
         }
     }
 
@@ -67,7 +79,8 @@ public class Enemy_Script : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Slash(Clone)")
-        { 
+        {
+            Debug.Log("I took damage");
             _lives -= 1;
         }
     }

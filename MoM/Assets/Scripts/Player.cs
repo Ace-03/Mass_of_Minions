@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public float rotateSpeed = 75;
     public GameObject slash;
     public GameObject camera;
+    public float slashDelay;
 
     private float vInput;
     private float hInput;
@@ -36,9 +37,14 @@ public class Player : MonoBehaviour
         vInput = Input.GetAxis("Vertical") * moveSpeed;
         hInput = Input.GetAxis("Horizontal") * rotateSpeed;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && slashDelay <= 0)
         {
-            GameObject newSlash = Instantiate(slash, this.transform.position + this.transform.rotation * new Vector3(0,0,.7f), this.transform.rotation * Quaternion.Euler(0,0,45)) as GameObject;
+            GameObject newSlash = Instantiate(slash, this.transform.position + this.transform.rotation * new Vector3(0, 0, .7f), this.transform.rotation * Quaternion.Euler(0, 0, 45)) as GameObject;
+            slashDelay = 1;
+        }
+        else
+        {
+            slashDelay -= Time.deltaTime;
         }
         /*
         this.transform.Translate(Vector3.forward * vInput * Time.deltaTime);

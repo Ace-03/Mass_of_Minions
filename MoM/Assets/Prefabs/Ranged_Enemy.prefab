@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 8651300046185454737}
   - component: {fileID: 8204522971323106057}
   - component: {fileID: -5599872082994738833}
+  - component: {fileID: 7492424353979315570}
   m_Layer: 0
   m_Name: Ranged_Enemy
   m_TagString: Untagged
@@ -274,3 +275,33 @@ MonoBehaviour:
   player: {fileID: 0}
   patrolRoute: {fileID: 0}
   locations: []
+  timeLeft: 0
+  missile: {fileID: 0}
+  missileSpeed: 75
+--- !u!54 &7492424353979315570
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3348248758569647369}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0

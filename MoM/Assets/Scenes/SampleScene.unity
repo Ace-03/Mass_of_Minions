@@ -587,6 +587,18 @@ PrefabInstance:
       propertyPath: patrolRoute
       value: 
       objectReference: {fileID: 1491687426}
+    - target: {fileID: 7348033876309741537, guid: 50f26e7a9e113ad46a9837fbd0e7ca73, type: 3}
+      propertyPath: m_Height
+      value: 2.0071936
+      objectReference: {fileID: 0}
+    - target: {fileID: 7348033876309741537, guid: 50f26e7a9e113ad46a9837fbd0e7ca73, type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7348033876309741537, guid: 50f26e7a9e113ad46a9837fbd0e7ca73, type: 3}
+      propertyPath: m_Center.y
+      value: 0.0035967827
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -739,7 +751,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1043465596}
   m_Layer: 0
-  m_Name: Blue Team
+  m_Name: Blue_Team
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
