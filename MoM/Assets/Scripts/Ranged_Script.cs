@@ -10,10 +10,10 @@ public class Ranged_Script : MonoBehaviour
     public Transform target;
     public Transform patrolRoute;
     public List<Transform> locations;
-    public float missileDelay;
     public GameObject missile;
     public float missileSpeed = 45f;
 
+    private float missileDelay;
     private int locationIndex = 0;
     private NavMeshAgent agent;
     private int _lives = 10;
@@ -52,6 +52,34 @@ public class Ranged_Script : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (gameObject.tag == "Red_Minion")
+        {
+            if (other.tag == "Blue_Tower")
+            {
+                Debug.Log("Attaking Blue Tower!");
+                target = GameObject.FindGameObjectWithTag("Blue_Tower").transform;
+            }
+            else if (other.tag == "Blue_Minion")
+            {
+                Debug.Log("Attaking Blue Minion!");
+                target = GameObject.FindGameObjectWithTag("Blue_Minion").transform;
+            }
+        }
+
+        if (gameObject.tag == "Blue_Minion")
+        {
+            if (other.tag == "Red_Tower")
+            {
+                Debug.Log("Attaking Red Tower!");
+                target = GameObject.FindGameObjectWithTag("Red_Tower").transform;
+            }
+            else if (other.tag == "Red_Minion")
+            {
+                Debug.Log("Attaking Red Minion!");
+                target = GameObject.FindGameObjectWithTag("Red_Minion").transform;
+            }
+        }
+
         if (other.transform == target)
         {
             agent.destination = target.position - new Vector3(2f, 2f, 2f);
@@ -62,12 +90,16 @@ public class Ranged_Script : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        
+        
+
+
         if (other.transform == target)
         {
             agent.destination = target.position - new Vector3(2f, 2f, 2f);
             Debug.Log("Attacking!");
 
-            if (missileDelay > 0)
+            if (missileDelay >= 0)
             {
                 missileDelay -= Time.deltaTime;
             }

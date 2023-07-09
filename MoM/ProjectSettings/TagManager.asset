@@ -8,6 +8,8 @@ TagManager:
   - Red_Minion
   - Blue_Weapon
   - Red_Weapon
+  - Blue_Tower
+  - Red_Tower
   layers:
   - Default
   - TransparentFX

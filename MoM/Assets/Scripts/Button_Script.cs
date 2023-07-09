@@ -1,7 +1,7 @@
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class ButtonBehavior : MonoBehaviour
+public class Button_Script : MonoBehaviour
 {
     public void RestartGame()
     {
