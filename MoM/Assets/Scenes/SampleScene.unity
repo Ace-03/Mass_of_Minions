@@ -218,6 +218,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ranged_Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3348248758569647369, guid: 1f0407e37a59cca4888cc1bcc4c48ddc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5610256457400829882, guid: 1f0407e37a59cca4888cc1bcc4c48ddc, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -898,6 +902,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ranged_Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3348248758569647369, guid: 1f0407e37a59cca4888cc1bcc4c48ddc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5610256457400829882, guid: 1f0407e37a59cca4888cc1bcc4c48ddc, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -1039,6 +1047,10 @@ PrefabInstance:
     - target: {fileID: 3348248758569647369, guid: 1f0407e37a59cca4888cc1bcc4c48ddc, type: 3}
       propertyPath: m_Name
       value: Ranged_Enemy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3348248758569647369, guid: 1f0407e37a59cca4888cc1bcc4c48ddc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5610256457400829882, guid: 1f0407e37a59cca4888cc1bcc4c48ddc, type: 3}
       propertyPath: m_RootOrder

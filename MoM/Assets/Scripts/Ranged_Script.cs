@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Ranged_Enemy_Script : MonoBehaviour
+public class Ranged_Script : MonoBehaviour
 {
 
-    public Transform player;
+    public Transform target;
     public Transform patrolRoute;
     public List<Transform> locations;
     public float missileDelay;
@@ -24,7 +24,16 @@ public class Ranged_Enemy_Script : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         InitializePatrolRoute();
         MoveToNextPatrolLocation();
-        player = GameObject.Find("Player").transform;
+
+        if (gameObject.tag == "Red_Minion")
+        {
+            target = GameObject.FindGameObjectWithTag("Blue_Minion").transform;
+        }
+        else if (gameObject.tag == "Blue_Minion")
+        {
+            target = GameObject.FindGameObjectWithTag("Red_Minion").transform;
+        }
+        
 
     }
 
@@ -43,9 +52,9 @@ public class Ranged_Enemy_Script : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Player")
+        if (other.transform == target)
         {
-            agent.destination = player.position - new Vector3(2f, 2f, 2f);
+            agent.destination = target.position - new Vector3(2f, 2f, 2f);
             //Debug.Log(player.position);
             Debug.Log("Player detected!");
         }
@@ -53,9 +62,9 @@ public class Ranged_Enemy_Script : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.name == "Player")
+        if (other.transform == target)
         {
-            agent.destination = player.position - new Vector3(2f, 2f, 2f);
+            agent.destination = target.position - new Vector3(2f, 2f, 2f);
             Debug.Log("Attacking!");
 
             if (missileDelay > 0)
@@ -72,7 +81,7 @@ public class Ranged_Enemy_Script : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.name == "Player")
+        if (other.transform == target)
         {
             agent.destination = locations[locationIndex].position;
             Debug.Log("Player Gone");
@@ -81,7 +90,7 @@ public class Ranged_Enemy_Script : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Slash(Clone)")
+        if (collision.gameObject.name == "Blue_Slash(Clone)")
         {
             Debug.Log("I took damage");
             _lives -= 1;

@@ -16,8 +16,8 @@ GameObject:
   - component: {fileID: 1938859772130278908}
   - component: {fileID: 4605916388542293619}
   m_Layer: 0
-  m_Name: Missile
-  m_TagString: Untagged
+  m_Name: Red_Missile
+  m_TagString: Red_Minion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

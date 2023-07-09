@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Red_Minion_Script : MonoBehaviour
+public class Melee_Script : MonoBehaviour
 {
 
-    public Transform player;
+    public Transform target;
     public Transform patrolRoute;
     public List<Transform> locations;
     public float slashDelay;
@@ -22,7 +22,15 @@ public class Red_Minion_Script : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         InitializePatrolRoute();
         MoveToNextPatrolLocation();
-        player = GameObject.Find("Player").transform;
+
+        if (gameObject.tag == "Red_Minion")
+        {
+            target = GameObject.FindGameObjectWithTag("Blue_Minion").transform;
+        }
+        else if (gameObject.tag == "Blue_Minion")
+        {
+            target = GameObject.FindGameObjectWithTag("Red_Minion").transform;
+        }
     }
 
     void MoveToNextPatrolLocation()
@@ -40,18 +48,18 @@ public class Red_Minion_Script : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Player")
+        if (other.transform == target)
         {
-            agent.destination = player.position - new Vector3(.2f, .2f, .2f);
+            agent.destination = target.position - new Vector3(.2f, .2f, .2f);
             Debug.Log("Player detected!");
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.name == "Player")
+        if (other.transform == target)
         {
-            agent.destination = player.position - new Vector3(.2f, .2f, .2f);
+            agent.destination = target.position - new Vector3(.2f, .2f, .2f);
             Debug.Log("Attacking!");
 
             if (slashDelay > 0)
@@ -68,7 +76,7 @@ public class Red_Minion_Script : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.name == "Player")
+        if (other.transform == target)
         {
             agent.destination = locations[locationIndex].position;
 

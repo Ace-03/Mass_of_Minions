@@ -6,13 +6,21 @@ using UnityEngine.AI;
 public class Missile_Script : MonoBehaviour
 {
     private NavMeshAgent agent;
-    public Transform player;
+    public Transform target;
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        
+        if (gameObject.tag == "Red_Minion")
+        {
+            target = GameObject.FindGameObjectWithTag("Blue_Minion").transform;
+        }
+        else if (gameObject.tag == "Blue_Minion")
+        {
+            target = GameObject.FindGameObjectWithTag("Red_Minion").transform;
+        }
     }
 
     // Update is called once per frame
@@ -23,12 +31,12 @@ public class Missile_Script : MonoBehaviour
 
     void FixedUpdate()
     {
-        agent.destination = player.position;
+        agent.destination = target.position;
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.transform == target)
         {
             Destroy(this.gameObject);
         }

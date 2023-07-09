@@ -25,7 +25,8 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Enemy" || collision.gameObject.name == "Missile(Clone)")
+        if (collision.gameObject.name == "Red_Missile(Clone)" ||
+            collision.gameObject.name == "Red_Slash(Clone)")
         {
             Debug.Log("Damage");
             _gameManager.HP -= 1;
