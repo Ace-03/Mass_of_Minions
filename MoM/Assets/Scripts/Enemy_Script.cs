@@ -13,7 +13,7 @@ public class Enemy_Script : MonoBehaviour
 
     private int locationIndex = 0;
     private NavMeshAgent agent;
-
+    private int _lives = 2;
     // Start is called before the first frame update
     void Start()
     {
@@ -63,9 +63,22 @@ public class Enemy_Script : MonoBehaviour
             Debug.Log("Player Gone");
         }
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "Slash(Clone)")
+        { 
+            _lives -= 1;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        
+        if (_lives <= 0)
+        {
+            Destroy(this.gameObject);
+            Debug.Log("Enemy down.");
+        }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Game_Manager : MonoBehaviour
 {
-    private int _playerHP = 10;
+    private int _playerHP = 10000;
 
     public string labelText = "";
 

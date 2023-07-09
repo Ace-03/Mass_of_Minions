@@ -58,7 +58,7 @@ public class Ranged_Enemy_Script : MonoBehaviour
             Debug.Log("Attacking!");
         }
 
-        if (timeLeft > 0)
+        if (timeLeft < 0)
         {
             timeLeft -= Time.deltaTime;
         }

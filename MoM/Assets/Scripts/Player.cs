@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     public float moveSpeed = 10;
     public float rotateSpeed = 75;
+    public GameObject slash;
+    public GameObject camera;
 
     private float vInput;
     private float hInput;
@@ -17,6 +19,7 @@ public class Player : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _gameManager = GameObject.Find("GameManager").GetComponent<Game_Manager>();
+        camera = GameObject.Find("Main Camera");
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -33,7 +36,10 @@ public class Player : MonoBehaviour
         vInput = Input.GetAxis("Vertical") * moveSpeed;
         hInput = Input.GetAxis("Horizontal") * rotateSpeed;
 
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            GameObject newSlash = Instantiate(slash, this.transform.position + this.transform.rotation * new Vector3(0,0,.7f), this.transform.rotation * Quaternion.Euler(0,0,45)) as GameObject;
+        }
         /*
         this.transform.Translate(Vector3.forward * vInput * Time.deltaTime);
         this.transform.Rotate(Vector3.up * hInput * Time.deltaTime);
