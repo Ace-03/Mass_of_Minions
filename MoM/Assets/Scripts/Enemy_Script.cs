@@ -40,7 +40,7 @@ public class Enemy_Script : MonoBehaviour
     {
         if (other.name == "Player")
         {
-            agent.destination = player.position;
+            agent.destination = player.position - new Vector3(.2f, .2f, .2f);
             Debug.Log("Player detected!");
         }
     }
@@ -59,6 +59,7 @@ public class Enemy_Script : MonoBehaviour
         if (other.name == "Player")
         {
             agent.destination = locations[locationIndex].position;
+
             Debug.Log("Player Gone");
         }
     }

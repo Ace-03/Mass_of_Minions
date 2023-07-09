@@ -10,13 +10,23 @@ public class Player : MonoBehaviour
     private float vInput;
     private float hInput;
     private Rigidbody _rb;
+    private Game_Manager _gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        _gameManager = GameObject.Find("GameManager").GetComponent<Game_Manager>();
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "Enemy" || collision.gameObject.name == "Missile(Clone)")
+        {
+            Debug.Log("Damage");
+            _gameManager.HP -= 1;
+        }
+    }
     // Update is called once per frame
     void Update()
     {
