@@ -86,11 +86,25 @@ public class Melee_Script : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Blue_Slash(Clone)")
+        if (gameObject.tag == "Red_Minion")
         {
-            Debug.Log("I took damage");
-            _lives -= 1;
+            if (collision.gameObject.tag == "Blue_Weapon")
+            {
+                Debug.Log("I took damage");
+                _lives -= 1;
+            }
         }
+
+        if (gameObject.tag == "Blue_Minion")
+        {
+            if (collision.gameObject.tag == "Red_Weapon")
+            {
+                Debug.Log("I took damage");
+                _lives -= 1;
+            }
+        }
+
+
     }
 
     // Update is called once per frame

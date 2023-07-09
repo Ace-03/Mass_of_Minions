@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4605916388542293619}
   m_Layer: 0
   m_Name: Red_Missile
-  m_TagString: Red_Minion
+  m_TagString: Red_Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,4 +169,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 169dbcf6d2527354f825a60a4c5d5ab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  target: {fileID: 0}

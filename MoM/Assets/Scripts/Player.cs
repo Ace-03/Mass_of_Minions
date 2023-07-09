@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     public float moveSpeed = 10;
     public float rotateSpeed = 75;
     public GameObject slash;
-    public GameObject camera;
+    //public GameObject camera;
     public float slashDelay;
 
     private float vInput;
@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _gameManager = GameObject.Find("GameManager").GetComponent<Game_Manager>();
-        camera = GameObject.Find("Main Camera");
+        //camera = GameObject.Find("Main Camera");
     }
 
     private void OnCollisionEnter(Collision collision)
